@@ -38,7 +38,8 @@ export async function POST() {
 
     return NextResponse.json({
       embed_url: payload.embed_url,
-      session_id: payload.session_id
+      session_id: payload.session_id,
+      admin_token: payload.admin_token
     }, { headers: { "Cache-Control": "no-store" } });
   } catch (error) {
     console.error("Hyperbeam request error:", error);

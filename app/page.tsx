@@ -22,11 +22,10 @@ export default function Home() {
       const response = await fetch("/api/session", { method: "POST" });
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || "Could not start the cloud browser.");
-      const module = await import("@hyperbeam/iframe");
+      const module = await import("@hyperbeam/web");
       const Hyperbeam = (module as any).default ?? module;
       hbRef.current = await Hyperbeam(hostRef.current, data.embed_url, {
-        width: "100%",
-        height: "100%"
+        adminToken: data.admin_token
       });
       setConnected(true);
     } catch (e) {
@@ -106,8 +105,8 @@ export default function Home() {
       </form>
 
       <nav className="toolbar" aria-label="Browser controls">
-        <button onClick={() => { try { history.back(); } catch {} }} title="Back" aria-label="Back">‹</button>
-        <button onClick={() => { try { history.forward(); } catch {} }} title="Forward" aria-label="Forward">›</button>
+        <button onClick={() => { void hbRef.current?.tabs?.goBack?.(); }} title="Back" aria-label="Back">‹</button>
+        <button onClick={() => { void hbRef.current?.tabs?.goForward?.(); }} title="Forward" aria-label="Forward">›</button>
         <button onClick={() => { setConnected(false); hbRef.current?.destroy?.(); hbRef.current = null; void startBrowser(); }} title="Reconnect" aria-label="Reconnect">↻</button>
         <div className="toolbarSpacer" />
         <button className="keyboardButton" onClick={openKeyboard} title="Open keyboard" aria-label="Open keyboard">⌨ <span>Keyboard</span></button>

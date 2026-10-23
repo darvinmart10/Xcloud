@@ -1,0 +1,66 @@
+:root {
+  color-scheme: dark;
+  --bg: #090b10;
+  --panel: #11151e;
+  --panel2: #171c27;
+  --border: #272e3b;
+  --muted: #8993a6;
+  --text: #f4f6fb;
+  --accent: #8b9cff;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: var(--bg); color: var(--text); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+body { overflow: hidden; }
+button, input { font: inherit; }
+button { color: inherit; cursor: pointer; }
+.appShell { height: 100dvh; width: 100%; display: flex; flex-direction: column; overflow: hidden; background: radial-gradient(ellipse at top, #151b2a 0%, var(--bg) 45%); padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom); }
+.topbar { height: 58px; min-height: 58px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; border-bottom: 1px solid rgba(255,255,255,.055); }
+.brand { display: flex; align-items: center; gap: 9px; font-weight: 750; letter-spacing: -.35px; }
+.brandMark { color: var(--accent); font-size: 23px; }
+.badge { color: #aeb8ff; background: #272d4c; border: 1px solid #3b4471; border-radius: 5px; padding: 3px 5px; font-size: 9px; letter-spacing: .8px; }
+.iconButton { width: 36px; height: 36px; border: 1px solid var(--border); border-radius: 10px; background: var(--panel); font-size: 21px; }
+.addressBar { margin: 12px 14px 8px; min-height: 48px; display: flex; align-items: center; gap: 9px; padding: 5px 6px 5px 13px; background: #151a24; border: 1px solid #2c3444; border-radius: 14px; box-shadow: 0 8px 25px #0002; }
+.lockIcon { font-size: 21px; color: #8f9bb2; transform: rotate(-30deg); }
+.addressBar input { min-width: 0; flex: 1; color: #f3f5fa; border: 0; outline: none; background: transparent; font-size: 14px; }
+.addressBar input::placeholder { color: #778196; }
+.goButton, .primaryButton { border: 0; border-radius: 10px; background: #a5b1ff; color: #101424; font-weight: 750; padding: 10px 16px; }
+.toolbar { min-height: 43px; display: flex; align-items: center; gap: 6px; padding: 0 15px 10px; }
+.toolbar > button { height: 34px; min-width: 34px; border: 1px solid var(--border); background: #121722; border-radius: 9px; font-size: 21px; color: #d7dced; }
+.toolbarSpacer { flex: 1; }
+.toolbar .keyboardButton { display: flex; align-items: center; gap: 8px; padding: 0 12px; font-size: 15px; border-color: #414b68; background: #1c2334; }
+.keyboardButton span { font-size: 12px; font-weight: 650; }
+.browserStage { flex: 1; min-height: 0; margin: 0 10px; border: 1px solid #252b37; border-radius: 15px; background: #050608; overflow: hidden; position: relative; display: flex; flex-direction: column; }
+.browserStatus { height: 30px; min-height: 30px; display: flex; align-items: center; gap: 7px; padding: 0 11px; font-size: 10px; color: #7e899e; background: #10141c; border-bottom: 1px solid #242a35; }
+.statusDot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #8d6c5e; flex: 0 0 auto; }
+.statusDot.online { background: #52d5a1; box-shadow: 0 0 9px #52d5a155; }
+.browserViewport { flex: 1; min-height: 0; width: 100%; position: relative; }
+.browserViewport iframe { display: block; width: 100% !important; height: 100% !important; border: 0; }
+.loadingCard, .errorCard { position: absolute; inset: 30px 0 0; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; background: #090c12; padding: 24px; }
+.loadingCard p { margin: 18px 0 5px; font-weight: 650; }
+.loadingCard span, .errorCard p { color: var(--muted); font-size: 13px; line-height: 1.5; max-width: 330px; }
+.spinner { width: 34px; height: 34px; border: 3px solid #2b3347; border-top-color: #a5b1ff; border-radius: 50%; animation: spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.errorIcon { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; background: #3a2227; color: #ff9caa; font-weight: 800; }
+.errorCard h2 { font-size: 18px; margin: 12px 0 0; }
+.errorCard p { margin: 8px 0 18px; }
+.bottomBar { min-height: 32px; display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 5px 16px; color: #6f7a8e; font-size: 10px; }
+.bottomBar > span { display: flex; align-items: center; gap: 6px; }
+.bottomBar .statusDot { width: 6px; height: 6px; }
+.keyboardHint { position: fixed; left: 12px; right: 12px; bottom: calc(40px + env(safe-area-inset-bottom)); padding: 12px 14px; background: #242c40; border: 1px solid #3e4968; border-radius: 12px; color: #e6eaff; font-size: 12px; box-shadow: 0 10px 30px #0007; }
+.toast { position: fixed; left: 12px; right: 12px; top: calc(65px + env(safe-area-inset-top)); display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 12px 14px; background: #3a2227; color: #ffdbe0; border: 1px solid #75414b; border-radius: 10px; font-size: 12px; z-index: 5; }
+.toast button { background: transparent; border: 0; font-size: 20px; }
+@media (min-width: 760px) {
+  .appShell { max-width: 1500px; margin: 0 auto; }
+  .topbar { padding: 0 24px; }
+  .addressBar { margin-left: 24px; margin-right: 24px; }
+  .toolbar { padding-left: 24px; padding-right: 24px; }
+  .browserStage { margin: 0 20px; }
+  .bottomBar { padding-left: 26px; padding-right: 26px; }
+}
+@media (max-height: 500px) {
+  .topbar { height: 42px; min-height: 42px; }
+  .addressBar { min-height: 39px; margin-top: 5px; margin-bottom: 4px; }
+  .toolbar { min-height: 35px; padding-bottom: 5px; }
+  .toolbar > button { height: 29px; }
+  .bottomBar { min-height: 23px; }
+}

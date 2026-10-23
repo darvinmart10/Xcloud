@@ -1,4 +1,4 @@
-# CloudBrowser — Hyperbeam + Next.js + Vercel
+# CloudBrowser — Hyperbeam Web SDK + Next.js + Vercel
 
 A mobile-first fullscreen cloud browser shell. Hyperbeam runs the remote browser; Next.js provides the UI and securely creates sessions server-side.
 
@@ -42,6 +42,7 @@ Open http://localhost:3000.
 
 Official guides:
 - Hyperbeam session API: https://next.hyperbeam.com/docs/rest-api/dispatch/starting-a-session/
+- Hyperbeam Web SDK: https://www.npmjs.com/package/@hyperbeam/web
 - Vercel Git deployment: https://vercel.com/docs/deployments/overview
 - Vercel environment variables: https://vercel.com/docs/environment-variables
 
@@ -54,5 +55,5 @@ The address field is focused when you tap the address bar or the Keyboard button
 - This starter creates a new Hyperbeam session per page load. Review your Hyperbeam plan and session quotas before sharing publicly.
 - Add authentication and rate limiting to `/api/session` before making the app public, otherwise visitors may be able to create sessions using your account.
 - Consider adding a server-side session lifecycle / cleanup strategy and usage monitoring.
-- The back/forward buttons in this starter are shell placeholders; remote browser history control depends on the Hyperbeam client API version and should be wired to its supported API before production.
-- Test the `@hyperbeam/iframe` package version against the current Hyperbeam documentation before production use.
+- Back/forward controls use the Hyperbeam client `tabs.goBack()` and `tabs.goForward()` methods.
+- This project uses `@hyperbeam/web`, the successor to the deprecated `@hyperbeam/iframe` package. Verify the current SDK version and API against Hyperbeam's official docs before production use.

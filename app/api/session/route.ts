@@ -20,8 +20,7 @@ export async function POST() {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        start_url: "https://trickybird.com
-          ",
+        start_url: "https://trickybird.com",
         offline_timeout: 300
       }),
       cache: "no-store"
